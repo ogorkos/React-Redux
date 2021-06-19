@@ -1,0 +1,22 @@
+.btn, .wind{
+   background: gray;
+   color: white;
+   padding:6px 12px;
+   margin: 6px;
+   font-size: larger;
+   border: none;
+   height: 100%;
+}
+.plus{
+   background-color: green;
+   cursor: pointer;
+
+}
+.minus{
+   background-color: red;
+   cursor: pointer;
+}
+.wind{
+   display: inline-block;
+   padding:6px 30px;
+}
