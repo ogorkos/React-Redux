@@ -1,39 +1,30 @@
+import React from 'react'
 import './App.css';
 import HelloWord from './HelloWord'
-// import { useState } from 'react';
-import {store} from './store'
+// import {store} from './store'
 import ButtonName from './ButtonName'
 import PlusMinus from './PlusMinus'
-// const arr =[1,2,3,4]
+import {connect} from 'react-redux'
 
-// First  version
-const App = () => {
+// Version - React Redux
+
+const App = ({name, num}) => {  
   return (
     <div className="App">
-      <h1>Redux</h1>
-      <HelloWord name = {store.getState().name}/>
-      <ButtonName names = {['Nir', 'Kostya', 'Alexey', 'Sammer', 'Dima']} />
-      <PlusMinus/>
+      <h1>React-Redux</h1>
+      <ButtonName names = {['Nir', 'Kostya', 'Alexey', 'Sammer', 'Dima']}/>
+      <HelloWord name = {name}/>
+      <PlusMinus num = {num}/>
     </div>
   );
 }
-export default App;
+function mapStateToProps(state){
+  return {
+    name:state.name,
+    num:state.num
+  }
+}
+export default connect(mapStateToProps,null)(App);
 
-
-
-// Second  version - React Redux
-// import {connect} from 'react-redux'
-// const App = ({name}) => {  
-//   return (
-//     <div className="App">
-//       <h1>Redux</h1>
-//       <HelloWord name = {name}/>
-//       <ButtonName names = {['Nir', 'Kostya', 'Alexey', 'Sammer', 'Dima']} />
-//       <PlusMinus/>
-//     </div>
-//   );
-// }
-// function mapStateToProps(state){
-//   return {name:state.name}
-// }
-// export default connect(mapStateToProps,null)(App);
+//mapStateToProps считывает state и передает как props в компоненты с помощью функции connect
+//connect связывает store с компонентой и содержит одно из двух значений: на первом месте функция которая считывает store и на втором функция в {} которая записывает данные в store. Во вторых скобках находится экспортируемая компонента 
